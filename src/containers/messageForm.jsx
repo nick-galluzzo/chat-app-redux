@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { createMessage } from '../actions/index';
+import { createMessage, fetchMessages } from '../actions/index';
 
 class MessageForm extends React.Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class MessageForm extends React.Component {
 
   handleSubmit = () => {
     this.props.createMessage(this.props.selectedChannel, this.props.currentUser, this.state.content);
+    this.setState({content: ''});
   }
 
   render() {
@@ -42,7 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createMessage }, dispatch);
+  return bindActionCreators({ createMessage, fetchMessages }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
