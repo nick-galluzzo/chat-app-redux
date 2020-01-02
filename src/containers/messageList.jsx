@@ -11,8 +11,12 @@ import { fetchMessages } from '../actions/index';
 
 class MessageList extends React.Component {
   componentDidMount() {
-    this.props.fetchMessages(this.props.selectedChannel);
+    this.fetchMessages();
   }
+
+  fetchMessages = () => {
+    this.props.fetchMessages(this.props.selectedChannel);
+  };
 
   renderMessages() {
     const { messages } = this.props;
