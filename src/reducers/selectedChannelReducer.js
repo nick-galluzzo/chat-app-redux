@@ -5,4 +5,4 @@ const selectedChannelReducer = (state = null, action) => {
   }
 };
 
-export default selectedChannelReducer
+export default selectedChannelReducer;
