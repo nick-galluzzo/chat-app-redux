@@ -8,12 +8,10 @@ export default class Message extends React.Component {
   render() {
     const { message } = this.props;
     return (
-      <li>
-       <h1> {message.author} </h1>
-      <p> {message.content} </p>
-      <p> {message.created_at} </p>
-      </li>
-
+      <div className="messages">
+        <h4> {message.author} </h4>
+        <p> {message.content} </p>
+      </div>
     );
   }
 }
