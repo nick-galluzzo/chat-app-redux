@@ -1,7 +1,20 @@
-import messages from '../../assets/data/messages';
+import { FETCH_MESSAGES } from '../actions/index';
 
-const messagesReducer = (state = messages, action) => {
+const messagesReducer = (state = [], action) => {
+  if (state === undefined) {
+    return [];
+  }
+
   switch (action.type) {
+    case FETCH_MESSAGES:
+      let newState = state;
+      if (newState.length < 1 ){
+        newState = [];
+      } else {
+        newState = action.payload;
+      }
+
+      return newState;
     default:
       return state;
   }
