@@ -22,7 +22,7 @@ class MessageList extends React.Component {
     const { messages } = this.props;
     return messages.map((message) => {
       return (
-        <Message message={message} key={message.created_at} />
+         <Message message={message} key={message.created_at} />
       );
     });
   }
