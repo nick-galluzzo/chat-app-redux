@@ -29,7 +29,7 @@ class MessageList extends React.Component {
   };
 
   scrollToBottom = () => {
-    this.list.scrollIntoView({ behavior: 'smooth'});
+    this.list.scrollIntoView({ behavior: 'smooth' });
   }
 
   renderMessages() {
