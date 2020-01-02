@@ -1,4 +1,4 @@
-import { FETCH_MESSAGES } from '../actions/index';
+import { FETCH_MESSAGES, CREATE_MESSAGE } from '../actions/index';
 
 const messagesReducer = (state = [], action) => {
   if (state === undefined) {
@@ -9,6 +9,11 @@ const messagesReducer = (state = [], action) => {
     case FETCH_MESSAGES:
       let newState = state;
       newState = action.payload.messages;
+
+      return newState;
+    case CREATE_MESSAGE:
+      newState = state;
+      newState.push(action.payload);
 
       return newState;
     default:
