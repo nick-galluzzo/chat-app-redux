@@ -1,17 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Message from '../components/message';
 
 class MessageList extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
+  renderMessages() {
     const { messages } = this.props;
+    return messages.map((message) => {
+      return (
+        <Message message={message} key={message.created_at} />
+      );
+    });
+  }
+
+  render() {
     return (
-      <div>
-      {console.log(messages)}
-      </div>
+      <ul>
+        { this.renderMessages() }
+      </ul>
     );
   }
 }
