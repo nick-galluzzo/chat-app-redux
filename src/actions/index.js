@@ -12,24 +12,21 @@ export const fetchMessages = (channel) => {
 };
 
 export const createMessage = (channel, author, content) => {
-  const message = {
-    author,
-    content
-  };
-
-  const url = `https://wagon-chat.herokuapp.com/${channel}/messages`;
+  const body = { author, content };
+  const url = `https://wagon-chat.herokuapp.com/general/messages`;
 
   const promise = fetch(url, {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    message: JSON.stringify(message)
+    body: JSON.stringify(body)
   }).then(r => r.json());
 
   return {
     type: CREATE_MESSAGE,
-    payload: message
+    payload: promise
   };
 };
+
