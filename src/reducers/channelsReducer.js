@@ -1,4 +1,4 @@
-const channelsReducer = (state = null, action) => {
+const channelsReducer = (state = 'general', action) => {
   switch (action.type) {
     default:
       return state;
