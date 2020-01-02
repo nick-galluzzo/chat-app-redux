@@ -45,7 +45,7 @@ class MessageList extends React.Component {
     return (
       <div className="channel-container">
         <div className="channel-title">
-          <span>Channel #{this.props.selectedChannel}</span>
+          <h1>Channel #{this.props.selectedChannel}</h1>
         </div>
         <div className='channel-content'>
           { this.renderMessages() }
