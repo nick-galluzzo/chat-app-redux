@@ -12,17 +12,22 @@ import { fetchMessages } from '../actions/index';
 class MessageList extends React.Component {
   componentDidMount() {
     this.fetchMessages();
+    this.refresher = setInterval(this.fetchMessages, 5000);
   }
 
   fetchMessages = () => {
     this.props.fetchMessages(this.props.selectedChannel);
   };
 
+  componentWillUnmount() {
+    clearInterval(this.refresher);
+  }
+
   renderMessages() {
     const { messages } = this.props;
     return messages.map((message) => {
       return (
-         <Message message={message} key={message.created_at} />
+       <Message message={message} key={message.created_at} />
       );
     });
   }
