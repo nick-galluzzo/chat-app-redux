@@ -12,35 +12,48 @@ import { fetchMessages } from '../actions/index';
 class MessageList extends React.Component {
   componentDidMount() {
     this.fetchMessages();
+    this.scrollToBottom();
     this.refresher = setInterval(this.fetchMessages, 5000);
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.refresher);
   }
 
   fetchMessages = () => {
     this.props.fetchMessages(this.props.selectedChannel);
   };
 
-  componentWillUnmount() {
-    clearInterval(this.refresher);
+  scrollToBottom = () => {
+    this.list.scrollIntoView({ behavior: 'smooth'});
   }
 
   renderMessages() {
     const { messages } = this.props;
     return messages.map((message) => {
       return (
-       <Message message={message} key={message.created_at} />
+        <Message message={message} key={message.id} />
       );
     });
   }
 
   render() {
     return (
-    <div>
-      <ul>
-        { this.renderMessages() }
-      </ul>
-
-      <MessageForm />
-    </div>
+      <div className="channel-container">
+        <div className="channel-title">
+          <span>Channel #{this.props.selectedChannel}</span>
+        </div>
+        <div className='channel-content'>
+          { this.renderMessages() }
+        </div>
+        <div ref={(list) => { this.list = list; }}>
+          <MessageForm />
+        </div>
+      </div>
     );
   }
 }
