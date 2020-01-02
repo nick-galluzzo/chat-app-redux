@@ -1,1 +1,1 @@
-A messaging application build using React and Redux
+A messaging application built using React and Redux.
