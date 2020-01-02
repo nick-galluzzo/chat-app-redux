@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
+// Components / Containers
 import Message from '../components/message';
+import MessageForm from './messageForm';
+
+// Actions
 import { fetchMessages } from '../actions/index';
 
 class MessageList extends React.Component {
@@ -20,9 +25,13 @@ class MessageList extends React.Component {
 
   render() {
     return (
+    <div>
       <ul>
         { this.renderMessages() }
       </ul>
+
+      <MessageForm />
+    </div>
     );
   }
 }
