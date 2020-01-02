@@ -9,14 +9,29 @@ body {
 
 .channels-list {
   flex: 0 0 10%;
-  margin: 0 20px;
+  margin: 20px 20px 0 20px;
   position: sticky;
   top: 20px;
   text-align: center;
+
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-top: 16px;
+  }
+
+  li:hover {
+    cursor: pointer;
+  }
 }
 
 .channel-container {
   flex: 0 0 90%;
+  margin-left: 32px;
 }
 
 .messages {
