@@ -1,13 +1,19 @@
 import React from 'react';
 
-class Message extends React.Component {
+export default class Message extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const { message } = this.props;
     return (
-      <div></div>
+      <li>
+       <h1> {message.author} </h1>
+      <p> {message.content} </p>
+      <p> {message.created_at} </p>
+      </li>
+
     );
   }
 }
