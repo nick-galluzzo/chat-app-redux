@@ -1,4 +1,4 @@
-const selectedChannelReducer = (state = null, action) => {
+const selectedChannelReducer = (state = 'general', action) => {
   switch (action.type) {
     default:
       return state;
