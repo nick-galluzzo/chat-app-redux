@@ -8,11 +8,7 @@ const messagesReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_MESSAGES:
       let newState = state;
-      if (newState.length < 1 ){
-        newState = [];
-      } else {
-        newState = action.payload;
-      }
+      newState = action.payload.messages;
 
       return newState;
     default:
