@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { createMessage, fetchMessages } from '../actions/index';
+import { createMessage } from '../actions/index';
 
 class MessageForm extends React.Component {
   constructor(props) {
