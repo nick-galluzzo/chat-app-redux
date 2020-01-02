@@ -1,7 +1,24 @@
 body {
-  font-family: Helvetica;
+  background-color: white;
 }
+
 .app {
+  display: flex;
+  margin: 10px 0px 20px 0px;
+}
+
+.channels-list {
+  flex: 0 0 10%;
+  margin: 0 20px;
+  position: sticky;
+  top: 20px;
+  text-align: center;
+}
+
+.channel-container {
+  flex: 0 0 90%;
+}
+
+.messages {
   margin-top: 20px;
-  margin-bottom: 20px;
 }
