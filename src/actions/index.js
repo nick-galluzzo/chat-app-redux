@@ -42,7 +42,7 @@ export function selectChannel(channel) {
 export const askUsername = () => {
   return {
     type: ASK_USERNAME,
-    payload: prompt('What is your username?')
+    payload: prompt('What is your username?') || `anonymous${Math.floor(10 + (Math.random() * 90))}`
   };
 };
 
