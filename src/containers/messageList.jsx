@@ -10,9 +10,11 @@ import MessageForm from './messageForm';
 import { fetchMessages } from '../actions/index';
 
 class MessageList extends React.Component {
+
   componentDidMount() {
     this.fetchMessages();
     this.scrollToBottom();
+    // change back to 5000
     this.refresher = setInterval(this.fetchMessages, 5000);
   }
 
