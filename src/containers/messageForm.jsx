@@ -16,7 +16,7 @@ class MessageForm extends React.Component {
     this.messageInput.focus();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate() {
     this.messageInput.focus();
   }
 
@@ -32,15 +32,16 @@ class MessageForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="message-form" onSubmit={this.handleSubmit}>
         <input
           type="text"
           value={this.state.content}
           placeholder="Write your message here..."
           onChange={this.handleMessage('content')}
           ref={(input) => { this.messageInput = input; }}
+          className="message-input"
         />
-        <button>
+        <button className='submit-button'>
           Send Message
         </button>
       </form>
