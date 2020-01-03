@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 import { createMessage, askUsername } from '../actions/index';
 
 class MessageForm extends React.Component {
-  componentDidMount() {
-    this.props.askUsername();
-  }
-
   constructor(props) {
     super(props);
     this.state = {
       content: ''
     };
+  }
+
+  componentDidMount() {
+    this.props.askUsername();
+    this.messageInput.focus();
   }
 
   handleMessage(property) {
@@ -33,6 +34,7 @@ class MessageForm extends React.Component {
           value={this.state.content}
           placeholder="Write your message here..."
           onChange={this.handleMessage('content')}
+          ref={(input) => { this.messageInput = input; }}
         />
         <button>
           Send Message
