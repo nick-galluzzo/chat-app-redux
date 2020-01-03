@@ -4,8 +4,6 @@ import currentUserReducer from './currentUserReducer';
 import messagesReducer from './messagesReducer';
 import selectedChannelReducer from './selectedChannelReducer';
 
-
-
 const rootReducer = combineReducers({
   channels: channelsReducer,
   currentUser: currentUserReducer,
