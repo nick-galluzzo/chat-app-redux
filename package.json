@@ -38,9 +38,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build"
-  },
-  "homepage": "https://nick-galluzzo.github.io/chat-app-redux/",
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
   }
 }
