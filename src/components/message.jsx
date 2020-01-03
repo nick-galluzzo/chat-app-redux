@@ -1,4 +1,5 @@
 import React from 'react';
+import { emojify } from 'react-emojione';
 
 function strToRGB(str) {
   let hash = 0;
@@ -21,7 +22,7 @@ export default class Message extends React.Component {
     return (
       <div className="messages">
         <h4 style={{ color: strToRGB(message.author)}}> {message.author} </h4>
-        <p> {message.content} </p>
+        <p>{emojify(message.content)}</p>
       </div>
     );
   }
