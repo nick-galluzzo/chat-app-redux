@@ -1,8 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { selectChannel, fetchMessages } from '../actions/index';
 
 class ChannelsList extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.selectedChannel !== nextProps.selectedChannel) {
+      this.props.fetchMessages(nextProps.selectedChannel);
+    }
+  }
+
   getStyle = (channel) => {
     if (channel === this.props.selectedChannel) {
       return {
@@ -14,10 +21,21 @@ class ChannelsList extends React.Component {
     }
   }
 
+  handleClick = (channel) => {
+    this.props.selectChannel(channel);
+  }
+
   renderChannels() {
     const { channels } = this.props;
     return channels.map((channel) => {
-      return <li style={this.getStyle(channel)}>{channel}</li>;
+      return (<li
+        style={this.getStyle(channel)}
+        onClick={() => this.handleClick(channel)}
+        key={channel}
+      >
+        #{channel}
+      </li>
+      );
     });
   }
 
@@ -26,7 +44,7 @@ class ChannelsList extends React.Component {
     return (
       <div className='channels-list'>
         <div className="channels-list">
-        <h4>{this.props.selectedChannel} chat</h4>
+          <h4>{this.props.selectedChannel} chat</h4>
           <ul>
             { this.renderChannels() }
           </ul>
@@ -36,10 +54,16 @@ class ChannelsList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  channels: state.channels,
-  selectedChannel: state.selectedChannel
-});
+function mapStateToProps(state) {
+  return {
+    channels: state.channels,
+    selectedChannel: state.selectedChannel
+  };
+}
 
-export default connect(mapStateToProps)(ChannelsList);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectChannel, fetchMessages }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelsList);
 
