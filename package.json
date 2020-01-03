@@ -35,8 +35,12 @@
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint './src/**/*.js' './src/**/*.jsx'",
-    "deploy": "webpack -p && gh-pages -d dist",
     "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build"
+  },
+  "homepage": "https://nick-galluzzo.github.io/chat-app-redux/",
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
