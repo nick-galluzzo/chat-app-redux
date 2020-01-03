@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectChannel, fetchMessages } from '../actions/index';
+import { strToRGB } from '../components/message';
 
 class ChannelsList extends React.Component {
   componentWillReceiveProps(nextProps) {
@@ -41,9 +42,10 @@ class ChannelsList extends React.Component {
 
   render() {
     return (
-      <div className='channels-list'>
-        <div className="channels-list">
-          <h4>{this.props.selectedChannel} chat</h4>
+      <div className="channels-list">
+        <div className="channel-list">
+          <h4>Redux App Chat</h4>
+          <h6 style={{ opacity: ".6" }}>{this.props.currentUser}</h6>
           <ul>
             { this.renderChannels() }
           </ul>
@@ -56,7 +58,8 @@ class ChannelsList extends React.Component {
 function mapStateToProps(state) {
   return {
     channels: state.channels,
-    selectedChannel: state.selectedChannel
+    selectedChannel: state.selectedChannel,
+    currentUser: state.currentUser
   };
 }
 
