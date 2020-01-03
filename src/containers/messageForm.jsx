@@ -16,6 +16,10 @@ class MessageForm extends React.Component {
     this.messageInput.focus();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    this.messageInput.focus();
+  }
+
   handleMessage(property) {
     return e => this.setState({ [property]: e.target.value });
   }
