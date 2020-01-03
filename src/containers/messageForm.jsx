@@ -1,9 +1,13 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { createMessage } from '../actions/index';
+import { createMessage, askUsername } from '../actions/index';
 
 class MessageForm extends React.Component {
+  componentDidMount() {
+    this.props.askUsername();
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +48,7 @@ const mapStateToProps = (state) => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createMessage }, dispatch);
+  return bindActionCreators({ createMessage, askUsername }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
