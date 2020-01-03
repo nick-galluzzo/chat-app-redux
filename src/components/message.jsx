@@ -1,7 +1,7 @@
 import React from 'react';
 import { emojify } from 'react-emojione';
 
-function strToRGB(str) {
+export function strToRGB(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i += 1) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -13,15 +13,15 @@ function strToRGB(str) {
 }
 
 export default class Message extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { message } = this.props;
+    const time = new Date(message.created_at).toLocaleTimeString([], {timeStyle: 'short'});
     return (
       <div className="messages">
-        <h4 style={{ color: strToRGB(message.author)}}> {message.author} </h4>
+      <i className="author">
+        <h5 style={{ color: strToRGB(message.author)}}> {message.author}</h5>
+        <small style={{opacity: '.6'}}>- {time}</small>
+      </i>
         <p>{emojify(message.content)}</p>
       </div>
     );
