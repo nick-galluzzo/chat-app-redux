@@ -1,10 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
 
 module.exports = {
+  entry: './src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: __dirname + '/dist',
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -28,7 +29,19 @@ module.exports = {
         test: /\.html$/,
         loader: 'html-loader'
       },
-    ]
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|json|xml|ico)$/,
+        loader: 'file-loader',
+        query: {
+          outputPath: 'assets/',
+          publicPath: 'http://localhost:8080/',
+          emitFile: true
+        }
+      }
+    ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   resolve: {
     extensions: [ '.js', '.jsx' ]
