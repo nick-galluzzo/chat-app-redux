@@ -32,13 +32,6 @@ export const createMessage = (channel, author, content) => {
   };
 };
 
-export function selectChannel(channel) {
-  return {
-    type: SELECT_CHANNEL,
-    payload: channel
-  };
-}
-
 export const askUsername = () => {
   return {
     type: ASK_USERNAME,
