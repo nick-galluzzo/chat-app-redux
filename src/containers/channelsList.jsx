@@ -5,8 +5,8 @@ import { selectChannel, fetchMessages } from '../actions/index';
 
 class ChannelsList extends React.Component {
   componentWillReceiveProps(nextProps) {
-    if (this.props.channelFromParams !== nextProps.this.props.channelFromParams) {
-      this.props.fetchMessages(nextProps.this.props.channelFromParams);
+    if (this.props.channelFromParams !== nextProps.channelFromParams) {
+      this.props.fetchMessages(nextProps.channelFromParams);
     }
   }
 
