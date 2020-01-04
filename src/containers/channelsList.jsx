@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectChannel, fetchMessages } from '../actions/index';
-import { strToRGB } from '../components/message';
 
 class ChannelsList extends React.Component {
   componentWillReceiveProps(nextProps) {
-    if (this.props.selectedChannel !== nextProps.selectedChannel) {
-      this.props.fetchMessages(nextProps.selectedChannel);
+    if (this.props.channelFromParams !== nextProps.this.props.channelFromParams) {
+      this.props.fetchMessages(nextProps.this.props.channelFromParams);
     }
   }
 
   getStyle = (channel) => {
-    if (channel === this.props.selectedChannel) {
+    if (channel === this.props.channelFromParams) {
       return {
         color: 'green',
         cursor: 'default',
@@ -58,7 +57,6 @@ class ChannelsList extends React.Component {
 function mapStateToProps(state) {
   return {
     channels: state.channels,
-    selectedChannel: state.selectedChannel,
     currentUser: state.currentUser
   };
 }
