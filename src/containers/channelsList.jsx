@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectChannel, fetchMessages } from '../actions/index';
+import { Link } from 'react-router-dom';
+import { fetchMessages } from '../actions/index';
 
 class ChannelsList extends React.Component {
   componentWillReceiveProps(nextProps) {
@@ -12,6 +13,7 @@ class ChannelsList extends React.Component {
 
   getStyle = (channel) => {
     if (channel === this.props.channelFromParams) {
+      console.log('same');
       return {
         color: 'green',
         cursor: 'default',
@@ -21,19 +23,13 @@ class ChannelsList extends React.Component {
     }
   }
 
-  handleClick = (channel) => {
-    this.props.selectChannel(channel);
-  }
-
   renderChannels() {
     const { channels } = this.props;
     return channels.map((channel) => {
-      return (<li
-        style={this.getStyle(channel)}
-        onClick={() => this.handleClick(channel)}
-        key={channel}
-      >
-        #{channel}
+      return (<li key={channel}>
+        <Link to={`/${channel}`} style={this.getStyle(channel)}>
+          #{channel}
+        </Link>
       </li>
       );
     });
@@ -62,7 +58,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectChannel, fetchMessages }, dispatch);
+  return bindActionCreators({ fetchMessages }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelsList);
