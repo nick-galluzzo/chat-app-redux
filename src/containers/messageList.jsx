@@ -10,7 +10,6 @@ import MessageForm from './messageForm';
 import { fetchMessages } from '../actions/index';
 
 class MessageList extends React.Component {
-
   componentDidMount() {
     this.fetchMessages();
     this.scrollToBottom();
@@ -27,7 +26,7 @@ class MessageList extends React.Component {
   }
 
   fetchMessages = () => {
-    this.props.fetchMessages(this.props.selectedChannel);
+    this.props.fetchMessages(this.props.channelFromParams);
   };
 
   scrollToBottom = () => {
@@ -49,14 +48,14 @@ class MessageList extends React.Component {
         <div className="message-information">
           <div className="channel-title">
             <h3>Channel </h3>
-            <h3 className='selected-channel'> #{this.props.selectedChannel}</h3>
+            <h3 className="selected-channel"> #{this.props.channelFromParams}</h3>
           </div>
-          <div className='channel-content'>
+          <div className="channel-content">
             { this.renderMessages() }
           </div>
         </div>
         <div ref={(list) => { this.list = list; }}>
-          <MessageForm />
+          <MessageForm channelFromParams={this.props.channelFromParams} />
         </div>
       </div>
     );
@@ -65,7 +64,6 @@ class MessageList extends React.Component {
 
 const mapStateToProps = (state) => ({
   messages: state.messages,
-  selectedChannel: state.selectedChannel
 });
 
 function mapDispatchToProps(dispatch) {
