@@ -48,14 +48,14 @@ class MessageList extends React.Component {
         <div className="message-information">
           <div className="channel-title">
             <h3>Channel </h3>
-            <h3 className='selected-channel'> #{this.props.channelFromParams}</h3>
+            <h3 className="selected-channel"> #{this.props.channelFromParams}</h3>
           </div>
-          <div className='channel-content'>
+          <div className="channel-content">
             { this.renderMessages() }
           </div>
         </div>
         <div ref={(list) => { this.list = list; }}>
-          <MessageForm />
+          <MessageForm channelFromParams={this.props.channelFromParams} />
         </div>
       </div>
     );
