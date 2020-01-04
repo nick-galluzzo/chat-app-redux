@@ -13,7 +13,6 @@ class ChannelsList extends React.Component {
 
   getStyle = (channel) => {
     if (channel === this.props.channelFromParams) {
-      console.log('same');
       return {
         color: 'green',
         cursor: 'default',
